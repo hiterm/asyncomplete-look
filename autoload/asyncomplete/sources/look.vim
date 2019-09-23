@@ -6,6 +6,11 @@ function! asyncomplete#sources#look#completor(opt, ctx) abort
   let l:kw = matchstr(l:typed, '\v\S{2,}$')
   let l:kwlen = len(l:kw)
 
+  if l:kwlen < 2
+    call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches, 1)
+    return
+  endif
+
   let l:startcol = l:col - l:kwlen
 
   let l:look = system('look '. l:kw)
