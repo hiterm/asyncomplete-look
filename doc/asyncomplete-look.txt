@@ -1,0 +1,28 @@
+*asyncomplete-look.txt*  Word dictionary source for asyncomplete.
+*asyncomplete-look*
+
+===============================================================================
+CONTENTS                                           *asyncomplete-look-contents*
+
+    1. Introduction              |asyncomplete-look-introduction|
+    2. Usage                     |asyncomplete-look-usage|
+
+===============================================================================
+1. Introduction                                *asyncomplete-look-introduction*
+
+Word dictionary source for |asyncomplete|.
+
+===============================================================================
+2. Usage                                              *asyncomplete-look-usage*
+
+>
+	au User asyncomplete_setup call asyncomplete#register_source({
+	    \ 'name': 'look',
+	    \ 'whitelist': ['text', 'markdown'],
+	    \ 'completor': function('asyncomplete#sources#look#completor'),
+	    \ })
+<
+
+===============================================================================
+
+vim:tw=78:ts=4:sts=4:sw=4:ft=help:norl:
