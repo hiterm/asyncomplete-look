@@ -3,7 +3,7 @@ function! asyncomplete#sources#look#completor(opt, ctx) abort
   let l:col = a:ctx['col']
   let l:typed = a:ctx['typed']
 
-  let l:kw = matchstr(l:typed, '\v\S{2,}$')
+  let l:kw = matchstr(l:typed, '\v[a-zA-Z]{2,}$')
   let l:kwlen = len(l:kw)
 
   if l:kwlen < 2
