@@ -7,7 +7,7 @@ function! asyncomplete#sources#spell#completor(opt, ctx) abort
 
   let l:startcol = l:col - l:kwlen
 
-  let l:matches = spellsuggest(l:kw)
+  let l:matches = map(spellsuggest(l:kw), {key, val -> {'menu': '[spell]', 'word': val}})
 
   call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches, 1)
 endfunction
