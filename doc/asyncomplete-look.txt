@@ -5,7 +5,9 @@
 CONTENTS                                           *asyncomplete-look-contents*
 
     1. Introduction              |asyncomplete-look-introduction|
-    2. Usage                     |asyncomplete-look-usage|
+    2. Usage                     |asyncomplete-usage|
+    2.1. look                    |asyncomplete-usage-look|
+    2.2. spell suggestion        |asyncomplete-usage-spell|
 
 ===============================================================================
 1. Introduction                                *asyncomplete-look-introduction*
@@ -13,14 +15,44 @@ CONTENTS                                           *asyncomplete-look-contents*
 Word dictionary source for |asyncomplete|.
 
 ===============================================================================
-2. Usage                                              *asyncomplete-look-usage*
+2. Usage                                                   *asyncomplete-usage*
 
+===============================================================================
+2.1. look                                             *asyncomplete-usage-look*
 >
 	au User asyncomplete_setup call asyncomplete#register_source({
 	    \ 'name': 'look',
 	    \ 'whitelist': ['text', 'markdown'],
 	    \ 'completor': function('asyncomplete#sources#look#completor'),
 	    \ })
+<
+===============================================================================
+2.1. spell suggestion                                *asyncomplete-usage-spell*
+
+Optional feature. Using vim's |spellsuggest()|.
+
+>
+	au User asyncomplete_setup call asyncomplete#register_source({
+		\ 'name': 'spell',
+		\ 'whitelist': ['text', 'markdown'],
+		\ 'completor': function('asyncomplete#sources#spell#completor'),
+		\ })
+
+	" Please ensure that spell option is enabled
+	autocmd FileType text setlocal spell
+	autocmd FileType markdown setlocal spell
+<
+
+Better experience with fuzzy filter such as
+machakann/asyncomplete-ezfilter.vim.
+
+>
+	let g:asyncomplete_preprocessor =
+	  \ [function('asyncomplete#preprocessor#ezfilter#filter')]
+
+	let g:asyncomplete#preprocessor#ezfilter#config = {}
+	let g:asyncomplete#preprocessor#ezfilter#config.spell =
+	  \ {ctx, items -> ctx.osa_filter(items, 1)}
 <
 
 ===============================================================================
