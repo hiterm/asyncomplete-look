@@ -14,7 +14,7 @@ function! asyncomplete#sources#look#completor(opt, ctx) abort
   let l:startcol = l:col - l:kwlen
 
   let l:look = system('look '. l:kw)
-  let l:matches = split(l:look, "\n")
+  let l:matches = map(split(l:look, "\n"), {key, val -> {'menu': '[look]', 'word': val}})
 
   call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches)
 endfunction
