@@ -5,7 +5,7 @@ function! asyncomplete#sources#spell#completor(opt, ctx) abort
   let l:kw = matchstr(l:typed, '\v[a-zA-Z]{2,}$')
   let l:kwlen = len(l:kw)
 
-  if l:kwlen < 2
+  if l:kwlen < g:asc_look_start_len
     call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches, 1)
     return
   endif
