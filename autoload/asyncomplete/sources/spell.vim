@@ -14,7 +14,7 @@ function! asyncomplete#sources#spell#completor(opt, ctx) abort
 
   let g:asc_look_spell_file = get(g:, 'asc_look_spell_file', '~/.vim/spell/en.utf-8.add')
   let l:grep = system('grep ^'. l:kw . ' ' . g:asc_look_spell_file)
-  let l:matches = map(split(l:grep, "\n"), {key, val -> {'menu': '[spell]', 'word': val}})
+  let l:matches = map(split(l:grep, "\n"), {key, val -> {'menu': '[look]', 'word': val}})
 
   call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches)
 endfunction
