@@ -13,6 +13,8 @@ Inspired by [neco-look](https://github.com/ujihisa/neco-look).
 
 ### look
 
+Main feature. Complete English words by using `look` command.
+
 ```vim
 au User asyncomplete_setup call asyncomplete#register_source({
     \ 'name': 'look',
@@ -21,9 +23,10 @@ au User asyncomplete_setup call asyncomplete#register_source({
     \ })
 ```
 
-### complete from good words
+### good words
 
 Optional complementary feature. Complete from your `zg` good words file.
+`grep` command is required.
 
 ```vim
 let g:asc_look_good_words_file = '~/.vim/spell/en.utf-8.add'
