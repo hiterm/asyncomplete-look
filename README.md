@@ -21,29 +21,15 @@ au User asyncomplete_setup call asyncomplete#register_source({
     \ })
 ```
 
-### spell suggestion
+### complete from good words
 
-Optional feature. Using vim's `spellsuggest()`.
+Optional complementary feature. Complete from your `zg` good words file.
 
 ```vim
+let g:asc_look_good_words_file = '~/.vim/spell/en.utf-8.add'
 au User asyncomplete_setup call asyncomplete#register_source({
-    \ 'name': 'spell',
+    \ 'name': 'look_good_words',
     \ 'whitelist': ['text', 'markdown'],
-    \ 'completor': function('asyncomplete#sources#spell#completor'),
+    \ 'completor': function('asyncomplete#sources#look#good_words'),
     \ })
-
-" Please ensure that spell option is enabled
-autocmd FileType text setlocal spell
-autocmd FileType markdown setlocal spell
-```
-
-Better experience with fuzzy filter such as [machakann/asyncomplete-ezfilter.vim](https://github.com/machakann/asyncomplete-ezfilter.vim).
-
-```
-let g:asyncomplete_preprocessor =
-  \ [function('asyncomplete#preprocessor#ezfilter#filter')]
-
-let g:asyncomplete#preprocessor#ezfilter#config = {}
-let g:asyncomplete#preprocessor#ezfilter#config.spell =
-  \ {ctx, items -> ctx.osa_filter(items, 1)}
 ```
