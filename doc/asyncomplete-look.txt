@@ -5,9 +5,10 @@
 CONTENTS                                           *asyncomplete-look-contents*
 
     1. Introduction              |asyncomplete-look-introduction|
-    2. Usage                     |asyncomplete-usage|
-    2.1. look                    |asyncomplete-usage-look|
-    2.2. spell suggestion        |asyncomplete-usage-spell|
+    2. Usage                     |asyncomplete-look-usage|
+    2.1. look                    |asyncomplete-look-usage-look|
+    2.2. good words              |asyncomplete-look-usage-good-words|
+    3. Variables                 |asyncomplete-look-variables|
 
 ===============================================================================
 1. Introduction                                *asyncomplete-look-introduction*
@@ -15,10 +16,10 @@ CONTENTS                                           *asyncomplete-look-contents*
 Word dictionary source for |asyncomplete|.
 
 ===============================================================================
-2. Usage                                                   *asyncomplete-usage*
+2. Usage                                              *asyncomplete-look-usage*
 
 ===============================================================================
-2.1. look                                             *asyncomplete-usage-look*
+2.1. look                                        *asyncomplete-look-usage-look*
 >
 	au User asyncomplete_setup call asyncomplete#register_source({
 	    \ 'name': 'look',
@@ -27,33 +28,27 @@ Word dictionary source for |asyncomplete|.
 	    \ })
 <
 ===============================================================================
-2.1. spell suggestion                                *asyncomplete-usage-spell*
+2.2. good words                            *asyncomplete-look-usage-good-words*
 
-Optional feature. Using vim's |spellsuggest()|.
+Optional complementary feature. Complete from your |zg| good words file.
 
 >
+	let g:asc_look_good_words_file = '~/.vim/spell/en.utf-8.add'
 	au User asyncomplete_setup call asyncomplete#register_source({
-		\ 'name': 'spell',
+		\ 'name': 'look_good_words',
 		\ 'whitelist': ['text', 'markdown'],
-		\ 'completor': function('asyncomplete#sources#spell#completor'),
+		\ 'completor': function('asyncomplete#sources#look#good_words'),
 		\ })
-
-	" Please ensure that spell option is enabled
-	autocmd FileType text setlocal spell
-	autocmd FileType markdown setlocal spell
 <
+===============================================================================
+2.2. Variables                                    *asyncomplete-look-variables*
 
-Better experience with fuzzy filter such as
-machakann/asyncomplete-ezfilter.vim.
 
->
-	let g:asyncomplete_preprocessor =
-	  \ [function('asyncomplete#preprocessor#ezfilter#filter')]
+                                                   *g:asc_look_good_words_file*
+g:asc_look_good_words_file
+		Path to your LL.EEE.add file. (cf. |spell|)
 
-	let g:asyncomplete#preprocessor#ezfilter#config = {}
-	let g:asyncomplete#preprocessor#ezfilter#config.spell =
-	  \ {ctx, items -> ctx.osa_filter(items, 1)}
-<
+		Default: "~/.vim/spell/en.utf-8.add"
 
 ===============================================================================
 
