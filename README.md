@@ -36,3 +36,7 @@ au User asyncomplete_setup call asyncomplete#register_source({
     \ 'completor': function('asyncomplete#sources#look#good_words'),
     \ })
 ```
+
+## Changelog
+
+[CHANGELOG.md](https://github.com/htlsne/asyncomplete-look/blob/master/CHANGELOG.md)
