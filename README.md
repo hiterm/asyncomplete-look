@@ -4,6 +4,8 @@ Word dictionary completion source for [asyncomplete.vim](https://github.com/prab
 
 Inspired by [neco-look](https://github.com/ujihisa/neco-look).
 
+<img src="https://raw.githubusercontent.com/htlsne/asyncomplete-look/images/screenshot.png" alt="screenshot" width=70%>
+
 ## Requirement
 
 - asyncomplete.vim
