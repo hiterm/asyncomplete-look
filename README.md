@@ -20,7 +20,7 @@ Main feature. Complete English words by using `look` command.
 ```vim
 au User asyncomplete_setup call asyncomplete#register_source({
     \ 'name': 'look',
-    \ 'whitelist': ['text', 'markdown'],
+    \ 'allowlist': ['text', 'markdown'],
     \ 'completor': function('asyncomplete#sources#look#completor'),
     \ })
 ```
@@ -34,7 +34,7 @@ Optional complementary feature. Complete from your `zg` good words file.
 let g:asc_look_good_words_file = '~/.vim/spell/en.utf-8.add'
 au User asyncomplete_setup call asyncomplete#register_source({
     \ 'name': 'look_good_words',
-    \ 'whitelist': ['text', 'markdown'],
+    \ 'allowlist': ['text', 'markdown'],
     \ 'completor': function('asyncomplete#sources#look#good_words'),
     \ })
 ```
